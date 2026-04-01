@@ -1,0 +1,22 @@
+[ 2026-04-01 16:05:15,035 ] 160 numexpr.utils -INFO - NumExpr defaulting to 8 threads.
+[ 2026-04-01 16:05:16,619 ] 38 root -INFO - Exported 2 records from MongoDB
+[ 2026-04-01 16:05:16,786 ] 70 root -INFO - Train/test split completed successfully
+[ 2026-04-01 16:05:16,791 ] 26 root -INFO - Starting data validation
+[ 2026-04-01 16:05:16,791 ] 70 root -INFO - Starting data validation
+[ 2026-04-01 16:05:16,794 ] 34 root -INFO - Required number of columns: 4
+[ 2026-04-01 16:05:16,794 ] 35 root -INFO - Dataframe has columns: Index(['src_ip', 'dst_ip', 'protocol', 'size'], dtype='object')
+[ 2026-04-01 16:05:16,794 ] 34 root -INFO - Required number of columns: 4
+[ 2026-04-01 16:05:16,794 ] 35 root -INFO - Dataframe has columns: Index(['src_ip', 'dst_ip', 'protocol', 'size'], dtype='object')
+[ 2026-04-01 16:05:16,804 ] 28 root -INFO - Data validation completed successfully
+[ 2026-04-01 16:05:16,804 ] 31 root -INFO - Starting data transformation
+[ 2026-04-01 16:05:16,804 ] 70 root -INFO - Starting data validation
+[ 2026-04-01 16:05:16,804 ] 34 root -INFO - Required number of columns: 4
+[ 2026-04-01 16:05:16,804 ] 35 root -INFO - Dataframe has columns: Index(['src_ip', 'dst_ip', 'protocol', 'size'], dtype='object')
+[ 2026-04-01 16:05:16,804 ] 34 root -INFO - Required number of columns: 4
+[ 2026-04-01 16:05:16,804 ] 35 root -INFO - Dataframe has columns: Index(['src_ip', 'dst_ip', 'protocol', 'size'], dtype='object')
+[ 2026-04-01 16:05:16,808 ] 72 root -INFO - Entered initiate_data_transformation method of DataTransformation class
+[ 2026-04-01 16:05:16,808 ] 74 root -INFO - Starting data transformation
+[ 2026-04-01 16:05:16,808 ] 42 root -INFO - Entered get_data_transformer_object method of Transformation class
+[ 2026-04-01 16:05:16,843 ] 48 root -INFO - Saving object to file: Artifacts\04_01_2026_16_05_16\data_transformation\preprocessing_object\preprocessing.pkl
+[ 2026-04-01 16:05:16,843 ] 53 root -INFO - Object saved successfully to file: Artifacts\04_01_2026_16_05_16\data_transformation\preprocessing_object\preprocessing.pkl
+[ 2026-04-01 16:05:16,844 ] 36 root -INFO - Data transformation completed successfully

@@ -6,7 +6,7 @@ import pandas as pd
 defining common constant variable for training pipeline
 '''
 
-TARGET_COLUMN = "Result"
+TARGET_COLUMN = "protocol"
 PIPELINE_NAME: str = "NetworkSecurity"
 ARTIFACT_DIR: str = "Artifacts"
 FILE_NAME: str = "dataset.csv"
@@ -34,5 +34,27 @@ DATA_VALIDATION_VALID_DIR: str = "validated"
 DATA_VALIDATION_INVALID_DIR: str = "invalid"
 DATA_VALIDATION_DRIFT_REPORT_DIR: str = "drift_report"
 DATA_VALIDATION_DRIFT_REPORT_FILE_NAME: str = "report.yaml"
+PREPROCESSING_OBJECT_FILE_NAME: str = "preprocessing.pkl"
 
 SCHEMA_FILE_PATH = os.path.join("data_schema", "schema.yaml")
+
+'''
+Data Transformation related constant start with DATA_TRANSFORMATION VAR NAME
+'''
+#knn imputer to replace nan values
+DATA_TRANSFORMATION_TRANSFORMED_DATA_DIR: str = "transformed"
+DATA_TRANSFORMATION_TRANSFORMED_OBJECT_DIR: str = "transformed_object"
+# networksecurity/constant/training_pipeline/__init__.py
+
+DATA_TRANSFORMATION_DIR_NAME: str = "data_transformation"
+DATA_TRANSFORMATION_TRAIN_FILE_NAME: str = "train"
+DATA_TRANSFORMATION_TEST_FILE_NAME : str= "test"
+DATA_TRANSFORMATION_PREPROCESSING_OBJECT_FILE_NAME: str = "preprocessing_object"
+
+
+DATA_TRANSFORMATION_IMPUTER_PARAMS: dict = {
+"missing_values": np.nan,
+"n_neighbors": 3,
+"weights": "uniform",
+
+}

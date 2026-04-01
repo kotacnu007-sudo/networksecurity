@@ -1,0 +1,10 @@
+[ 2026-04-01 15:35:42,484 ] 160 numexpr.utils -INFO - NumExpr defaulting to 8 threads.
+[ 2026-04-01 15:36:18,940 ] 38 root -INFO - Exported 2 records from MongoDB
+[ 2026-04-01 15:36:19,177 ] 70 root -INFO - Train/test split completed successfully
+[ 2026-04-01 15:36:19,271 ] 26 root -INFO - Starting data validation
+[ 2026-04-01 15:36:19,271 ] 70 root -INFO - Starting data validation
+[ 2026-04-01 15:36:19,277 ] 34 root -INFO - Required number of columns: 4
+[ 2026-04-01 15:36:19,277 ] 35 root -INFO - Dataframe has columns: Index(['src_ip', 'dst_ip', 'protocol', 'size'], dtype='object')
+[ 2026-04-01 15:36:19,277 ] 34 root -INFO - Required number of columns: 4
+[ 2026-04-01 15:36:19,280 ] 35 root -INFO - Dataframe has columns: Index(['src_ip', 'dst_ip', 'protocol', 'size'], dtype='object')
+[ 2026-04-01 15:36:19,314 ] 28 root -INFO - Data validation completed successfully

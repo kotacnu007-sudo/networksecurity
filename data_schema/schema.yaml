@@ -1,0 +1,10 @@
+columns:
+ -  src_ip: string
+ -  dst_ip: string
+ -  protocol: string
+ -  size: int
+
+numerical_columns:
+  - size
+
+target_column: protocol

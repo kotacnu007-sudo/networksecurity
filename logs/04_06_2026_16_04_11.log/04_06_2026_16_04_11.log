@@ -1,0 +1,21 @@
+[ 2026-04-06 16:04:33,315 ] 38 root -INFO - Exported 2 records from MongoDB
+[ 2026-04-06 16:04:33,455 ] 70 root -INFO - Train/test split completed successfully
+[ 2026-04-06 16:04:33,588 ] 30 root -INFO - Starting data validation
+[ 2026-04-06 16:04:33,588 ] 70 root -INFO - Starting data validation
+[ 2026-04-06 16:04:33,595 ] 34 root -INFO - Required number of columns: 4
+[ 2026-04-06 16:04:33,595 ] 35 root -INFO - Dataframe has columns: Index(['src_ip', 'dst_ip', 'protocol', 'size'], dtype='object')
+[ 2026-04-06 16:04:33,596 ] 34 root -INFO - Required number of columns: 4
+[ 2026-04-06 16:04:33,596 ] 35 root -INFO - Dataframe has columns: Index(['src_ip', 'dst_ip', 'protocol', 'size'], dtype='object')
+[ 2026-04-06 16:04:33,755 ] 32 root -INFO - Data validation completed successfully
+[ 2026-04-06 16:04:33,755 ] 35 root -INFO - Starting data transformation
+[ 2026-04-06 16:04:33,822 ] 71 root -INFO - Class distribution before split: {'TCP': 1, 'UDP': 1}
+[ 2026-04-06 16:04:33,824 ] 74 root -WARNING - One class has fewer than 2 samples. Falling back to simple split.
+[ 2026-04-06 16:04:33,932 ] 37 root -INFO - Saving object to file: Artifacts\04_06_2026_16_04_14\data_transformation\preprocessing_object\preprocessing.pkl
+[ 2026-04-06 16:04:33,936 ] 42 root -INFO - Object saved successfully to file: Artifacts\04_06_2026_16_04_14\data_transformation\preprocessing_object\preprocessing.pkl
+[ 2026-04-06 16:04:33,936 ] 102 root -INFO - Train set size after SMOTE: 1
+[ 2026-04-06 16:04:33,938 ] 103 root -INFO - Class distribution after SMOTE: (array(['TCP'], dtype=object), array([1], dtype=int64))
+[ 2026-04-06 16:04:33,938 ] 39 root -INFO - Data transformation completed successfully
+[ 2026-04-06 16:04:33,938 ] 41 root -INFO - Starting model training
+[ 2026-04-06 16:04:33,943 ] 140 root -WARNING - Training set too small. Switching to anomaly detection.
+[ 2026-04-06 16:04:34,076 ] 37 root -INFO - Saving object to file: Artifacts\04_06_2026_16_04_14\model_trainer\trained_model\model.pkl
+[ 2026-04-06 16:04:34,089 ] 42 root -INFO - Object saved successfully to file: Artifacts\04_06_2026_16_04_14\model_trainer\trained_model\model.pkl

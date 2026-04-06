@@ -26,6 +26,7 @@ RandomForestClassifier,
 )
 import numpy as np
 from imblearn.over_sampling import SMOTE
+import mlflow
 
 class ModelTrainer:
     def __init__(self, model_trainer_config:ModelTrainerConfig, data_transformation_artifact:DataTransformationArtifact):
@@ -34,79 +35,93 @@ class ModelTrainer:
             self.data_transformation_artifact=data_transformation_artifact
         except Exception as e:
             raise NetworkSecurityException(e, sys) from e
-    
-    def train_model(self, x_train, y_train, x_test, y_test) -> ModelTrainerArtifact:
-        try:
-            models = {
-                "Logistic Regression": LogisticRegression(),
-                "K-Nearest Neighbors": KNeighborsClassifier(),
-                "Decision Tree": DecisionTreeClassifier(),
-                "Random Forest": RandomForestClassifier(verbose=1),
-                "AdaBoost": AdaBoostClassifier(),
-                "Gradient Boosting": GradientBoostingClassifier(),
-                "Support Vector Machine": SVC(probability=True)
-            }
-            params={
-                "Decision Tree":{
-                    'criterion':['gini','entropy'],
-                    'max_depth':[3,5,7,None]
+    def track_mlflow(self,best_model,classification_metric):
+        with mlflow.start_run():
+            f1_score = classification_metric.f1_score
+            precision_score = classification_metric.precision_score
+            recall_score = classification_metric.recall_score
+            accuracy = classification_metric.accuracy
+            mlflow.log_metric("f1_score", f1_score)
+            mlflow.log_metric("precision_score", precision_score)   
+            mlflow.log_metric("recall_score", recall_score)
+            mlflow.log_metric("accuracy", accuracy)
+            mlflow.sklearn.log_model(best_model, "model")
+
+    def train_model(self,x_train,y_train,x_test,y_test):
+        models = {
+        "Random Forest": RandomForestClassifier(verbose=1),
+        "Decision Tree": DecisionTreeClassifier(),
+        "Gradient Boosting": GradientBoostingClassifier(verbose=1),
+        "Logistic Regression": LogisticRegression(verbose=1),
+        "AdaBoost": AdaBoostClassifier(),
+        }
+        params={
+                "Decision Tree": {
+                'criterion' : ['gini', 'entropy', 'log_loss'],
+                # 'splitter': ['best','random' ],
+                # 'max_features': ['sqrt','log2'],
                 },
+
                 "Random Forest":{
-                    'n_estimators':[10,50,100],
-                    'criterion':['gini','entropy'],
-                    'max_depth':[3,5,7,None]
+                # 'criterion' : ['gini', 'entropy', 'log_loss'],
+
+                # 'max_features': ['sqrt','log2' , None],
+                'n_estimators': [8,16,32,64,128,256]
                 },
-                "AdaBoost":{
-                    'n_estimators':[10,50,100],
-                    'learning_rate':[0.01,0.1,1]
-                },
+
                 "Gradient Boosting":{
-                    'n_estimators':[10,50,100],
-                    'learning_rate':[0.01,0.1,1],
-                    'max_depth':[3,5,7,None]
+                # 'loss': ['log_loss', 'exponential' ],
+                'learning_rate': [.1,.01,.05,.001],
+                'subsample' : [0.6,0.7,0.75,0.8,0.85,0.9],
+                # 'criterion' : ['squared_error', 'friedman_mse'],
+                # 'max_features' : ['auto','sqrt' , 'log2'],
+                'n_estimators': [8,16,32,64,128,256]
                 },
-                "Support Vector Machine":{
-                    'C':[0.1,1,10],
-                    'kernel':['linear','rbf']
-                },
-                "Logistic Regression":{
-                    'C':[0.1,1,10],
+
+                "Logistic Regression": {},
+                "AdaBoost":{
+                'learning_rate': [.1,.01,0.5,.001],
+                'n_estimators': [8,16,32,64,128,256]}
                 }
 
-            }
+        model_report: dict = evaluate_models(x_train, y_train, x_test, y_test, models=models, param=params)
 
-            model_report: dict = evaluate_models(x_train, y_train, x_test, y_test, models=models, param=params)
+        best_model_score = max(sorted(model_report.values()))
+        best_model_name = [model_name for model_name, score in model_report.items() if score == best_model_score][0]
+        best_model = models[best_model_name]
 
-            best_model_score = max(sorted(model_report.values()))
-            best_model_name = [model_name for model_name, score in model_report.items() if score == best_model_score][0]
-            best_model = models[best_model_name]
+        logging.info(f"Best found model on both training and testing dataset is: {best_model_name}")
 
-            logging.info(f"Best found model on both training and testing dataset is: {best_model_name}")
+        #training the best model
+        best_model.fit(x_train, y_train)
 
-            #training the best model
-            best_model.fit(x_train, y_train)
+        #calculating metric on training and testing data
+        y_train_pred = best_model.predict(x_train)
+        y_test_pred = best_model.predict(x_test)
+        classification_train_metric_artifact = get_classification_score(y_true=y_train, y_pred=y_train_pred)
+        ##Track the mlflow metric for training data
+        self.track_mlflow_metric(classification_train_metric_artifact, "train")
+        classification_test_metric_artifact = get_classification_score(y_true=y_test, y_pred=y_test_pred)
+        self.track_mlflow_metric(classification_test_metric_artifact, "test")
+        preprocessor = load_object(file_path=self.data_transformation_artifact.transformed_object_file_path)
 
-            #calculating metric on training and testing data
-            y_train_pred = best_model.predict(x_train)
-            y_test_pred = best_model.predict(x_test)
-            classification_train_metric_artifact = get_classification_score(y_true=y_train, y_pred=y_train_pred)
-            classification_test_metric_artifact = get_classification_score(y_true=y_test, y_pred=y_test_pred)
-            preprocessor = load_object(file_path=self.data_transformation_artifact.transformed_object_file_path)
+        model_dir_path = os.path.dirname(self.model_trainer_config.trained_model_file_path)
+        os.makedirs(model_dir_path, exist_ok=True)
+        Network_model = NetworkModel(preprocessor=preprocessor, model=best_model)
+        save_object(self.model_trainer_config.trained_model_file_path, obj=Network_model)
 
-            model_dir_path = os.path.dirname(self.model_trainer_config.trained_model_file_path)
-            os.makedirs(model_dir_path, exist_ok=True)
-            Network_model = NetworkModel(preprocessor=preprocessor, model=best_model)
-            save_object(self.model_trainer_config.trained_model_file_path, obj=Network_model)
-
-            model_trainer_artifact = ModelTrainerArtifact(
+        model_trainer_artifact = ModelTrainerArtifact(
                 trained_model_file_path=self.model_trainer_config.trained_model_file_path,
-                classification_train_metric_artifact=classification_train_metric_artifact,
-                classification_test_metric_artifact=classification_test_metric_artifact
+                best_model_name=best_model_name,
+                best_model_score=best_model_score,
+                train_metric_artifact=train_metrics,   # instance of ClassificationMetricArtifact
+                test_metric_artifact=test_metrics      # instance of ClassificationMetricArtifact
             )
-            logging.info(f"Model trainer artifact: {model_trainer_artifact}")            
-            return model_trainer_artifact
-        except Exception as e:
-            raise NetworkSecurityException(e, sys) from e
+
+
+        logging.info(f"Model trainer artifact: {model_trainer_artifact}")            
+        return model_trainer_artifact
+   
 
     def initiate_model_trainer(self) -> ModelTrainerArtifact:
         try:

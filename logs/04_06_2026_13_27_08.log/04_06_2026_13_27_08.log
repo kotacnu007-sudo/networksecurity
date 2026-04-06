@@ -1,0 +1,19 @@
+[ 2026-04-06 13:27:15,528 ] 38 root -INFO - Exported 2 records from MongoDB
+[ 2026-04-06 13:27:15,553 ] 70 root -INFO - Train/test split completed successfully
+[ 2026-04-06 13:27:15,574 ] 30 root -INFO - Starting data validation
+[ 2026-04-06 13:27:15,575 ] 70 root -INFO - Starting data validation
+[ 2026-04-06 13:27:15,589 ] 34 root -INFO - Required number of columns: 4
+[ 2026-04-06 13:27:15,590 ] 35 root -INFO - Dataframe has columns: Index(['src_ip', 'dst_ip', 'protocol', 'size'], dtype='object')
+[ 2026-04-06 13:27:15,590 ] 34 root -INFO - Required number of columns: 4
+[ 2026-04-06 13:27:15,591 ] 35 root -INFO - Dataframe has columns: Index(['src_ip', 'dst_ip', 'protocol', 'size'], dtype='object')
+[ 2026-04-06 13:27:15,622 ] 32 root -INFO - Data validation completed successfully
+[ 2026-04-06 13:27:15,623 ] 35 root -INFO - Starting data transformation
+[ 2026-04-06 13:27:15,651 ] 72 root -INFO - Class distribution before split: {'TCP': 1, 'UDP': 1}
+[ 2026-04-06 13:27:15,652 ] 75 root -WARNING - One class has fewer than 2 samples. Falling back to simple split.
+[ 2026-04-06 13:27:15,672 ] 35 root -INFO - Entered get_data_transformer_object method of Transformation class
+[ 2026-04-06 13:27:15,672 ] 37 root -INFO - Saving object to file: Artifacts\04_06_2026_13_27_14\data_transformation\preprocessing_object\preprocessing.pkl
+[ 2026-04-06 13:27:15,677 ] 42 root -INFO - Object saved successfully to file: Artifacts\04_06_2026_13_27_14\data_transformation\preprocessing_object\preprocessing.pkl
+[ 2026-04-06 13:27:15,677 ] 104 root -INFO - Train set size after SMOTE: 1
+[ 2026-04-06 13:27:15,678 ] 105 root -INFO - Class distribution after SMOTE: (array(['TCP'], dtype=object), array([1], dtype=int64))
+[ 2026-04-06 13:27:15,679 ] 39 root -INFO - Data transformation completed successfully
+[ 2026-04-06 13:27:15,680 ] 41 root -INFO - Starting model training

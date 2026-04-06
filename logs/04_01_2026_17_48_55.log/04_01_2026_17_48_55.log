@@ -1,0 +1,17 @@
+[ 2026-04-01 17:50:20,034 ] 38 root -INFO - Exported 2 records from MongoDB
+[ 2026-04-01 17:50:20,535 ] 70 root -INFO - Train/test split completed successfully
+[ 2026-04-01 17:50:20,703 ] 29 root -INFO - Starting data validation
+[ 2026-04-01 17:50:20,704 ] 70 root -INFO - Starting data validation
+[ 2026-04-01 17:50:20,713 ] 34 root -INFO - Required number of columns: 4
+[ 2026-04-01 17:50:20,714 ] 35 root -INFO - Dataframe has columns: Index(['src_ip', 'dst_ip', 'protocol', 'size'], dtype='object')
+[ 2026-04-01 17:50:20,714 ] 34 root -INFO - Required number of columns: 4
+[ 2026-04-01 17:50:20,715 ] 35 root -INFO - Dataframe has columns: Index(['src_ip', 'dst_ip', 'protocol', 'size'], dtype='object')
+[ 2026-04-01 17:50:20,796 ] 31 root -INFO - Data validation completed successfully
+[ 2026-04-01 17:50:20,796 ] 34 root -INFO - Starting data transformation
+[ 2026-04-01 17:50:20,797 ] 72 root -INFO - Entered initiate_data_transformation method of DataTransformation class
+[ 2026-04-01 17:50:20,797 ] 74 root -INFO - Starting data transformation
+[ 2026-04-01 17:50:20,812 ] 42 root -INFO - Entered get_data_transformer_object method of Transformation class
+[ 2026-04-01 17:50:21,042 ] 52 root -INFO - Saving object to file: Artifacts\04_01_2026_17_49_41\data_transformation\preprocessing_object\preprocessing.pkl
+[ 2026-04-01 17:50:21,047 ] 57 root -INFO - Object saved successfully to file: Artifacts\04_01_2026_17_49_41\data_transformation\preprocessing_object\preprocessing.pkl
+[ 2026-04-01 17:50:21,048 ] 38 root -INFO - Data transformation completed successfully
+[ 2026-04-01 17:50:21,048 ] 40 root -INFO - Starting model training

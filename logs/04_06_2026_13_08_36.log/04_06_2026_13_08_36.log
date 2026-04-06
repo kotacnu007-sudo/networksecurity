@@ -1,0 +1,32 @@
+[ 2026-04-06 13:08:41,992 ] 38 root -INFO - Exported 2 records from MongoDB
+[ 2026-04-06 13:08:42,013 ] 70 root -INFO - Train/test split completed successfully
+[ 2026-04-06 13:08:42,025 ] 30 root -INFO - Starting data validation
+[ 2026-04-06 13:08:42,025 ] 70 root -INFO - Starting data validation
+[ 2026-04-06 13:08:42,035 ] 34 root -INFO - Required number of columns: 4
+[ 2026-04-06 13:08:42,036 ] 35 root -INFO - Dataframe has columns: Index(['src_ip', 'dst_ip', 'protocol', 'size'], dtype='object')
+[ 2026-04-06 13:08:42,037 ] 34 root -INFO - Required number of columns: 4
+[ 2026-04-06 13:08:42,037 ] 35 root -INFO - Dataframe has columns: Index(['src_ip', 'dst_ip', 'protocol', 'size'], dtype='object')
+[ 2026-04-06 13:08:42,057 ] 32 root -INFO - Data validation completed successfully
+[ 2026-04-06 13:08:42,058 ] 35 root -INFO - Starting data transformation
+[ 2026-04-06 13:08:42,058 ] 77 root -INFO - Entered initiate_data_transformation method of DataTransformation class
+[ 2026-04-06 13:08:42,074 ] 44 root -INFO - Entered get_data_transformer_object method of Transformation class
+[ 2026-04-06 13:08:42,124 ] 37 root -INFO - Saving object to file: Artifacts\04_06_2026_13_08_40\data_transformation\preprocessing_object\preprocessing.pkl
+[ 2026-04-06 13:08:42,126 ] 42 root -INFO - Object saved successfully to file: Artifacts\04_06_2026_13_08_40\data_transformation\preprocessing_object\preprocessing.pkl
+[ 2026-04-06 13:08:42,126 ] 37 root -INFO - Saving object to file: Artifacts\04_06_2026_13_08_40\data_transformation\label_encoder.pkl
+[ 2026-04-06 13:08:42,128 ] 42 root -INFO - Object saved successfully to file: Artifacts\04_06_2026_13_08_40\data_transformation\label_encoder.pkl
+[ 2026-04-06 13:08:42,129 ] 39 root -INFO - Data transformation completed successfully
+[ 2026-04-06 13:08:42,129 ] 41 root -INFO - Starting model training
+[ 2026-04-06 13:08:42,491 ] 68 root -INFO - Training Logistic Regression model
+[ 2026-04-06 13:08:42,491 ] 79 root -WARNING - Skipping Logistic Regression: too few samples (1) to train.
+[ 2026-04-06 13:08:42,491 ] 68 root -INFO - Training K-Nearest Neighbors model
+[ 2026-04-06 13:08:42,492 ] 79 root -WARNING - Skipping K-Nearest Neighbors: too few samples (1) to train.
+[ 2026-04-06 13:08:42,492 ] 68 root -INFO - Training Decision Tree model
+[ 2026-04-06 13:08:42,492 ] 79 root -WARNING - Skipping Decision Tree: too few samples (1) to train.
+[ 2026-04-06 13:08:42,492 ] 68 root -INFO - Training Random Forest model
+[ 2026-04-06 13:08:42,492 ] 79 root -WARNING - Skipping Random Forest: too few samples (1) to train.
+[ 2026-04-06 13:08:42,492 ] 68 root -INFO - Training AdaBoost model
+[ 2026-04-06 13:08:42,492 ] 79 root -WARNING - Skipping AdaBoost: too few samples (1) to train.
+[ 2026-04-06 13:08:42,492 ] 68 root -INFO - Training Gradient Boosting model
+[ 2026-04-06 13:08:42,493 ] 79 root -WARNING - Skipping Gradient Boosting: too few samples (1) to train.
+[ 2026-04-06 13:08:42,493 ] 68 root -INFO - Training Support Vector Machine model
+[ 2026-04-06 13:08:42,493 ] 79 root -WARNING - Skipping Support Vector Machine: too few samples (1) to train.

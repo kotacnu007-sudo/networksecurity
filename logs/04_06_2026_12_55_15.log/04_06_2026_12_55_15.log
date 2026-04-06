@@ -1,0 +1,32 @@
+[ 2026-04-06 12:55:25,874 ] 38 root -INFO - Exported 2 records from MongoDB
+[ 2026-04-06 12:55:25,937 ] 70 root -INFO - Train/test split completed successfully
+[ 2026-04-06 12:55:25,955 ] 29 root -INFO - Starting data validation
+[ 2026-04-06 12:55:25,956 ] 70 root -INFO - Starting data validation
+[ 2026-04-06 12:55:25,971 ] 34 root -INFO - Required number of columns: 4
+[ 2026-04-06 12:55:25,972 ] 35 root -INFO - Dataframe has columns: Index(['src_ip', 'dst_ip', 'protocol', 'size'], dtype='object')
+[ 2026-04-06 12:55:25,972 ] 34 root -INFO - Required number of columns: 4
+[ 2026-04-06 12:55:25,973 ] 35 root -INFO - Dataframe has columns: Index(['src_ip', 'dst_ip', 'protocol', 'size'], dtype='object')
+[ 2026-04-06 12:55:26,008 ] 31 root -INFO - Data validation completed successfully
+[ 2026-04-06 12:55:26,008 ] 34 root -INFO - Starting data transformation
+[ 2026-04-06 12:55:26,009 ] 77 root -INFO - Entered initiate_data_transformation method of DataTransformation class
+[ 2026-04-06 12:55:26,030 ] 44 root -INFO - Entered get_data_transformer_object method of Transformation class
+[ 2026-04-06 12:55:26,103 ] 37 root -INFO - Saving object to file: Artifacts\04_06_2026_12_55_24\data_transformation\preprocessing_object\preprocessing.pkl
+[ 2026-04-06 12:55:26,107 ] 42 root -INFO - Object saved successfully to file: Artifacts\04_06_2026_12_55_24\data_transformation\preprocessing_object\preprocessing.pkl
+[ 2026-04-06 12:55:26,109 ] 37 root -INFO - Saving object to file: Artifacts\04_06_2026_12_55_24\data_transformation\label_encoder.pkl
+[ 2026-04-06 12:55:26,112 ] 42 root -INFO - Object saved successfully to file: Artifacts\04_06_2026_12_55_24\data_transformation\label_encoder.pkl
+[ 2026-04-06 12:55:26,113 ] 38 root -INFO - Data transformation completed successfully
+[ 2026-04-06 12:55:26,113 ] 40 root -INFO - Starting model training
+[ 2026-04-06 12:55:26,123 ] 68 root -INFO - Training Logistic Regression model
+[ 2026-04-06 12:55:26,123 ] 73 root -WARNING - Skipping Logistic Regression: only one class in training data.
+[ 2026-04-06 12:55:26,124 ] 68 root -INFO - Training K-Nearest Neighbors model
+[ 2026-04-06 12:55:26,124 ] 73 root -WARNING - Skipping K-Nearest Neighbors: only one class in training data.
+[ 2026-04-06 12:55:26,124 ] 68 root -INFO - Training Decision Tree model
+[ 2026-04-06 12:55:26,124 ] 73 root -WARNING - Skipping Decision Tree: only one class in training data.
+[ 2026-04-06 12:55:26,124 ] 68 root -INFO - Training Random Forest model
+[ 2026-04-06 12:55:26,125 ] 73 root -WARNING - Skipping Random Forest: only one class in training data.
+[ 2026-04-06 12:55:26,125 ] 68 root -INFO - Training AdaBoost model
+[ 2026-04-06 12:55:26,125 ] 73 root -WARNING - Skipping AdaBoost: only one class in training data.
+[ 2026-04-06 12:55:26,125 ] 68 root -INFO - Training Gradient Boosting model
+[ 2026-04-06 12:55:26,126 ] 73 root -WARNING - Skipping Gradient Boosting: only one class in training data.
+[ 2026-04-06 12:55:26,126 ] 68 root -INFO - Training Support Vector Machine model
+[ 2026-04-06 12:55:26,126 ] 73 root -WARNING - Skipping Support Vector Machine: only one class in training data.

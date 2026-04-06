@@ -1,0 +1,20 @@
+[ 2026-04-06 13:28:50,781 ] 38 root -INFO - Exported 2 records from MongoDB
+[ 2026-04-06 13:28:52,075 ] 70 root -INFO - Train/test split completed successfully
+[ 2026-04-06 13:28:52,096 ] 30 root -INFO - Starting data validation
+[ 2026-04-06 13:28:52,096 ] 70 root -INFO - Starting data validation
+[ 2026-04-06 13:28:52,111 ] 34 root -INFO - Required number of columns: 4
+[ 2026-04-06 13:28:52,112 ] 35 root -INFO - Dataframe has columns: Index(['src_ip', 'dst_ip', 'protocol', 'size'], dtype='object')
+[ 2026-04-06 13:28:52,113 ] 34 root -INFO - Required number of columns: 4
+[ 2026-04-06 13:28:52,114 ] 35 root -INFO - Dataframe has columns: Index(['src_ip', 'dst_ip', 'protocol', 'size'], dtype='object')
+[ 2026-04-06 13:28:52,160 ] 32 root -INFO - Data validation completed successfully
+[ 2026-04-06 13:28:52,161 ] 35 root -INFO - Starting data transformation
+[ 2026-04-06 13:28:52,181 ] 72 root -INFO - Class distribution before split: {'TCP': 1, 'UDP': 1}
+[ 2026-04-06 13:28:52,181 ] 75 root -WARNING - One class has fewer than 2 samples. Falling back to simple split.
+[ 2026-04-06 13:28:52,195 ] 35 root -INFO - Entered get_data_transformer_object method of Transformation class
+[ 2026-04-06 13:28:52,196 ] 37 root -INFO - Saving object to file: Artifacts\04_06_2026_13_28_49\data_transformation\preprocessing_object\preprocessing.pkl
+[ 2026-04-06 13:28:52,199 ] 42 root -INFO - Object saved successfully to file: Artifacts\04_06_2026_13_28_49\data_transformation\preprocessing_object\preprocessing.pkl
+[ 2026-04-06 13:28:52,199 ] 104 root -INFO - Train set size after SMOTE: 1
+[ 2026-04-06 13:28:52,201 ] 105 root -INFO - Class distribution after SMOTE: (array(['TCP'], dtype=object), array([1], dtype=int64))
+[ 2026-04-06 13:28:52,201 ] 39 root -INFO - Data transformation completed successfully
+[ 2026-04-06 13:28:52,202 ] 41 root -INFO - Starting model training
+[ 2026-04-06 13:28:52,212 ] 128 root -WARNING - Training set too small. Switching to anomaly detection.

@@ -116,8 +116,6 @@ class ModelTrainer:
         os.makedirs(model_dir_path, exist_ok=True)
         Network_model = NetworkModel(preprocessor=preprocessor, model=best_model)
         save_object(self.model_trainer_config.trained_model_file_path, obj=NetworkModel)
-        #model pusher
-        save_object("final_model/best_model.pkl", best_model)
 
         model_trainer_artifact = ModelTrainerArtifact(
                 trained_model_file_path=self.model_trainer_config.trained_model_file_path,
@@ -155,6 +153,9 @@ class ModelTrainer:
                 model.fit(x_train)
 
                 save_object(self.model_trainer_config.trained_model_file_path, model)
+                #model pusher
+                save_object("final_model/model.pkl", model)
+
 
                 return ModelTrainerArtifact(
                     trained_model_file_path=self.model_trainer_config.trained_model_file_path,

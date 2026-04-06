@@ -1,0 +1,30 @@
+[ 2026-04-06 18:00:01,604 ] 160 numexpr.utils -INFO - NumExpr defaulting to 8 threads.
+[ 2026-04-06 18:00:06,390 ] 1026 httpx -INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[ 2026-04-06 18:00:07,032 ] 107 dagshub -INFO - Accessing as kotacnu007-sudo
+[ 2026-04-06 18:00:08,063 ] 1026 httpx -INFO - HTTP Request: GET https://dagshub.com/api/v1/repos/kotacnu007-sudo/networksecurity "HTTP/1.1 200 OK"
+[ 2026-04-06 18:00:08,598 ] 1026 httpx -INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[ 2026-04-06 18:00:08,600 ] 107 dagshub -INFO - Initialized MLflow to track repo "kotacnu007-sudo/networksecurity"
+[ 2026-04-06 18:00:08,600 ] 107 dagshub -INFO - Repository kotacnu007-sudo/networksecurity initialized!
+[ 2026-04-06 18:00:09,017 ] 38 root -INFO - Exported 2 records from MongoDB
+[ 2026-04-06 18:00:09,218 ] 70 root -INFO - Train/test split completed successfully
+[ 2026-04-06 18:00:09,223 ] 30 root -INFO - Starting data validation
+[ 2026-04-06 18:00:09,223 ] 70 root -INFO - Starting data validation
+[ 2026-04-06 18:00:09,225 ] 34 root -INFO - Required number of columns: 4
+[ 2026-04-06 18:00:09,226 ] 35 root -INFO - Dataframe has columns: Index(['src_ip', 'dst_ip', 'protocol', 'size'], dtype='object')
+[ 2026-04-06 18:00:09,226 ] 34 root -INFO - Required number of columns: 4
+[ 2026-04-06 18:00:09,226 ] 35 root -INFO - Dataframe has columns: Index(['src_ip', 'dst_ip', 'protocol', 'size'], dtype='object')
+[ 2026-04-06 18:00:09,233 ] 32 root -INFO - Data validation completed successfully
+[ 2026-04-06 18:00:09,233 ] 35 root -INFO - Starting data transformation
+[ 2026-04-06 18:00:09,238 ] 71 root -INFO - Class distribution before split: {'TCP': 1, 'UDP': 1}
+[ 2026-04-06 18:00:09,239 ] 74 root -WARNING - One class has fewer than 2 samples. Falling back to simple split.
+[ 2026-04-06 18:00:09,240 ] 37 root -INFO - Saving object to file: Artifacts\04_06_2026_18_00_02\data_transformation\preprocessing_object\preprocessing.pkl
+[ 2026-04-06 18:00:09,240 ] 42 root -INFO - Object saved successfully to file: Artifacts\04_06_2026_18_00_02\data_transformation\preprocessing_object\preprocessing.pkl
+[ 2026-04-06 18:00:09,240 ] 37 root -INFO - Saving object to file: final_model/preprocessor.pkl
+[ 2026-04-06 18:00:09,240 ] 42 root -INFO - Object saved successfully to file: final_model/preprocessor.pkl
+[ 2026-04-06 18:00:09,254 ] 103 root -INFO - Train set size after SMOTE: 1
+[ 2026-04-06 18:00:09,254 ] 104 root -INFO - Class distribution after SMOTE: (array(['TCP'], dtype=object), array([1], dtype=int64))
+[ 2026-04-06 18:00:09,254 ] 39 root -INFO - Data transformation completed successfully
+[ 2026-04-06 18:00:09,254 ] 41 root -INFO - Starting model training
+[ 2026-04-06 18:00:09,256 ] 151 root -WARNING - Training set too small. Switching to anomaly detection.
+[ 2026-04-06 18:00:09,259 ] 37 root -INFO - Saving object to file: Artifacts\04_06_2026_18_00_02\model_trainer\trained_model\model.pkl
+[ 2026-04-06 18:00:09,259 ] 42 root -INFO - Object saved successfully to file: Artifacts\04_06_2026_18_00_02\model_trainer\trained_model\model.pkl

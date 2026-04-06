@@ -27,6 +27,13 @@ RandomForestClassifier,
 import numpy as np
 from imblearn.over_sampling import SMOTE
 import mlflow
+mlflow.set_tracking_uri("file:./mlruns")
+
+
+import dagshub
+
+dagshub.init(repo_owner='kotacnu007-sudo', repo_name='networksecurity', mlflow=True)
+
 
 class ModelTrainer:
     def __init__(self, model_trainer_config:ModelTrainerConfig, data_transformation_artifact:DataTransformationArtifact):
@@ -100,22 +107,24 @@ class ModelTrainer:
         y_test_pred = best_model.predict(x_test)
         classification_train_metric_artifact = get_classification_score(y_true=y_train, y_pred=y_train_pred)
         ##Track the mlflow metric for training data
-        self.track_mlflow_metric(classification_train_metric_artifact, "train")
         classification_test_metric_artifact = get_classification_score(y_true=y_test, y_pred=y_test_pred)
-        self.track_mlflow_metric(classification_test_metric_artifact, "test")
+        self.track_mlflow(best_model, classification_train_metric_artifact)
+        self.track_mlflow(best_model, classification_test_metric_artifact)
         preprocessor = load_object(file_path=self.data_transformation_artifact.transformed_object_file_path)
 
         model_dir_path = os.path.dirname(self.model_trainer_config.trained_model_file_path)
         os.makedirs(model_dir_path, exist_ok=True)
         Network_model = NetworkModel(preprocessor=preprocessor, model=best_model)
-        save_object(self.model_trainer_config.trained_model_file_path, obj=Network_model)
+        save_object(self.model_trainer_config.trained_model_file_path, obj=NetworkModel)
+        #model pusher
+        save_object("final_model/best_model.pkl", best_model)
 
         model_trainer_artifact = ModelTrainerArtifact(
                 trained_model_file_path=self.model_trainer_config.trained_model_file_path,
                 best_model_name=best_model_name,
                 best_model_score=best_model_score,
-                train_metric_artifact=train_metrics,   # instance of ClassificationMetricArtifact
-                test_metric_artifact=test_metrics      # instance of ClassificationMetricArtifact
+                train_metric_artifact=classification_train_metric_artifact,
+                test_metric_artifact=classification_test_metric_artifact
             )
 
 

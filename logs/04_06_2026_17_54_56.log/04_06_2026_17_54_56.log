@@ -1,0 +1,21 @@
+[ 2026-04-06 17:55:04,174 ] 160 numexpr.utils -INFO - NumExpr defaulting to 8 threads.
+[ 2026-04-06 17:55:36,801 ] 1026 httpx -INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[ 2026-04-06 17:55:37,137 ] 107 dagshub -INFO - Accessing as kotacnu007-sudo
+[ 2026-04-06 17:55:38,362 ] 1026 httpx -INFO - HTTP Request: GET https://dagshub.com/api/v1/repos/kotacnu007-sudo/networksecurity "HTTP/1.1 200 OK"
+[ 2026-04-06 17:55:39,539 ] 1026 httpx -INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[ 2026-04-06 17:55:39,540 ] 107 dagshub -INFO - Initialized MLflow to track repo "kotacnu007-sudo/networksecurity"
+[ 2026-04-06 17:55:39,542 ] 107 dagshub -INFO - Repository kotacnu007-sudo/networksecurity initialized!
+[ 2026-04-06 17:55:40,810 ] 38 root -INFO - Exported 2 records from MongoDB
+[ 2026-04-06 17:55:40,900 ] 70 root -INFO - Train/test split completed successfully
+[ 2026-04-06 17:55:40,967 ] 30 root -INFO - Starting data validation
+[ 2026-04-06 17:55:40,967 ] 70 root -INFO - Starting data validation
+[ 2026-04-06 17:55:40,972 ] 34 root -INFO - Required number of columns: 4
+[ 2026-04-06 17:55:40,972 ] 35 root -INFO - Dataframe has columns: Index(['src_ip', 'dst_ip', 'protocol', 'size'], dtype='object')
+[ 2026-04-06 17:55:40,972 ] 34 root -INFO - Required number of columns: 4
+[ 2026-04-06 17:55:40,972 ] 35 root -INFO - Dataframe has columns: Index(['src_ip', 'dst_ip', 'protocol', 'size'], dtype='object')
+[ 2026-04-06 17:55:40,984 ] 32 root -INFO - Data validation completed successfully
+[ 2026-04-06 17:55:40,984 ] 35 root -INFO - Starting data transformation
+[ 2026-04-06 17:55:41,004 ] 71 root -INFO - Class distribution before split: {'TCP': 1, 'UDP': 1}
+[ 2026-04-06 17:55:41,035 ] 74 root -WARNING - One class has fewer than 2 samples. Falling back to simple split.
+[ 2026-04-06 17:55:41,086 ] 37 root -INFO - Saving object to file: Artifacts\04_06_2026_17_55_19\data_transformation\preprocessing_object\preprocessing.pkl
+[ 2026-04-06 17:55:41,087 ] 42 root -INFO - Object saved successfully to file: Artifacts\04_06_2026_17_55_19\data_transformation\preprocessing_object\preprocessing.pkl

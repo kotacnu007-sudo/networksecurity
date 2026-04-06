@@ -98,6 +98,7 @@ class DataTransformation:
 
             # ✅ Save the transformer object
             save_object(self.data_transformation_config.transformed_object_file_path, preprocessor)
+            save_object("final_model/preprocessor.pkl", preprocessor)
 
             logging.info(f"Train set size after SMOTE: {train_arr.shape[0]}")
             logging.info(f"Class distribution after SMOTE: {np.unique(y_train, return_counts=True)}")

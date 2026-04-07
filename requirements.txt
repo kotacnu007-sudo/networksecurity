@@ -21,6 +21,7 @@ pyaml
 fastapi
 uvicorn
 python-multipart
+git-filter-repo
 
 
 

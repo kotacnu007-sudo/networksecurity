@@ -1,6 +1,7 @@
 import os
 import sys
 
+from networksecurity.constant.training_pipeline import TRAINING_BUCKET_NAME
 from networksecurity.exception.exception import NetworkSecurityException
 from networksecurity.logging.logger import logging
 
@@ -87,12 +88,31 @@ class TrainingPipeline:
             return model_trainer_artifact
         except Exception as e:
             raise NetworkSecurityException(e, sys) from e
+    def sync_artifact_dir_to_s3(self):
+        try:
+            logging.info("Syncing artifact directory to S3")
+            aws_bucket_url = f"s3://{TRAINING_BUCKET_NAME}/artifact/{self.training_pipeline_config.timestamp}"
+            self.s3_sync.sync_folder_to_s3(folder=self.training_pipeline_config.artifact_dir, aws_bucket_url=aws_bucket_url)
+            logging.info("Artifact directory synced to S3 successfully")
+        except Exception as e:
+            raise NetworkSecurityException(e, sys) from e
+    def sync_saved_model_dir_to_s3(self):
+        try:
+            logging.info("Syncing saved model directory to S3")
+            aws_bucket_url = f"s3://{TRAINING_BUCKET_NAME}/saved_model/{self.training_pipeline_config.timestamp}"
+            self.s3_sync.sync_folder_to_s3(folder=self.training_pipeline_config.saved_model_dir, aws_bucket_url=aws_bucket_url)
+            logging.info("Saved model directory synced to S3 successfully")
+        except Exception as e:
+            raise NetworkSecurityException(e, sys) from e
     def run_pipeline(self):
         try:
             data_ingestion_artifact=self.start_data_ingestion()
             data_validation_artifact=self.start_data_validation(data_ingestion_artifact=data_ingestion_artifact)
             data_transformation_artifact=self.start_data_transformation(data_validation_artifact=data_validation_artifact)
             model_trainer_artifact=self.start_model_trainer(data_transformation_artifact=data_transformation_artifact)
+
+            self.sync_artifact_dir_to_s3()
+            self.sync_saved_model_dir_to_s3()
             return model_trainer_artifact
         except Exception as e:
             raise NetworkSecurityException(e, sys) from e

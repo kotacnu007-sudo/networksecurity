@@ -18,6 +18,9 @@ mlflow
 dagshub
 
 pyaml
+fastapi
+uvicorn
+python-multipart
 
 
 

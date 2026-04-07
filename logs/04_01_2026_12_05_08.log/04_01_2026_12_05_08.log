@@ -1,3 +1,0 @@
-[ 2026-04-01 12:05:09,528 ] 160 numexpr.utils -INFO - NumExpr defaulting to 8 threads.
-[ 2026-04-01 12:05:13,136 ] 38 root -INFO - Exported 2 records from MongoDB
-[ 2026-04-01 12:05:13,280 ] 70 root -INFO - Train/test split completed successfully
